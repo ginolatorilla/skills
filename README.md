@@ -17,3 +17,4 @@ Run `./install.sh` and use them in your AI agent harndess.
 - `surendrandb/writing-skills:google-dev-docs`
 - `mattpocock:code-review`
 - `mattpocock:grilling`
+- `mattpocock:handoff`
