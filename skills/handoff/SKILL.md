@@ -10,7 +10,13 @@ A handoff is a **cold start** document. Its reader is a fresh agent that has thi
 
 ## Steps
 
-1. **Target.** Use the path the user gave. Otherwise use `handoff.md` at the repo root. If the file exists, replace all of it with the current state.
+1. **Target.** Look for handoffs in these paths in order:
+   - What the user gave you.
+   - `.agents/handoffs/*.md` (if there's one pick it else ask the user and recommended the recently updated).
+   - `.agents/handoff.md`
+   - `handoff.md`
+   - Paths from rules
+   If the file exists, replace all of it with the current state.
 
 2. **Read the state from the repo.** Memory of the session is a second source; the repo is the first.
 
