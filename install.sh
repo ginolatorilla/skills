@@ -45,12 +45,12 @@ SKILL_FOLDERS=(
     # "vendor/writing-skills/winnie-the-pooh"
     # "vendor/writing-skills/yoda"
     "vendor/visual-explainer"
-    # Always put skills/ at the bottom so they override the vendors
-    "skills/asd-ste100"
-    "skills/code-review"
-    "skills/google-dev-docs"
-    "skills/grilling"
-    "skills/handoff"
+    # Always put vendor-overrides/ and skills/ at the bottom so they override the vendors
+    "vendor-overrides/mattpocock-skills/code-review"
+    "vendor-overrides/mattpocock-skills/grilling"
+    "vendor-overrides/mattpocock-skills/handoff"
+    "vendor-overrides/writing-skills/asd-ste100"
+    "vendor-overrides/writing-skills/google-dev-docs"
     "skills/load-handoff"
     "skills/my-writing-style"
 )

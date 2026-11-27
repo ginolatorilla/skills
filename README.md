@@ -11,14 +11,24 @@ Why? Because some agent harnesses like Claude do not allow for plugin skills to 
 
 Run `./install.sh` and use them in your AI agent harndess.
 
+## Layout
+
+- `vendor/<plugin>/<skill>`: upstream skills, unchanged.
+- `vendor-overrides/<plugin>/<skill>`: my modified copies of upstream skills. They replace the vendor skill with the same name.
+- `skills/<skill>`: skills that I wrote.
+
 ## Skills changed
 
-- `surendrandb/writing-skills:asd-ste100`
-- `surendrandb/writing-skills:google-dev-docs`
-- `mattpocock:code-review`
-- `mattpocock:grilling`
-- `mattpocock:handoff`
+Stored in `vendor-overrides/`.
+
+- `writing-skills/asd-ste100`
+- `writing-skills/google-dev-docs`
+- `mattpocock-skills/code-review`
+- `mattpocock-skills/grilling`
+- `mattpocock-skills/handoff`
 
 ## Skills added
+
+Stored in `skills/`.
 
 - `load-handoff`: loads the handoff file that `handoff` wrote for the current branch.
