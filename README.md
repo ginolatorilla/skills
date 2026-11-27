@@ -18,3 +18,7 @@ Run `./install.sh` and use them in your AI agent harndess.
 - `mattpocock:code-review`
 - `mattpocock:grilling`
 - `mattpocock:handoff`
+
+## Skills added
+
+- `load-handoff`: loads the handoff file that `handoff` wrote for the current branch.

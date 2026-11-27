@@ -1,6 +1,6 @@
 ---
 name: handoff
-description: Write handoff.md so a fresh session can resume the work without this conversation. Use when the user says handoff or hand off, or asks to create or update a handoff file.
+description: Write a handoff file so a fresh session can resume the work without this conversation. Use when the user says handoff or hand off, or asks to create or update a handoff file.
 argument-hint: "[path] [what the next session will do]"
 ---
 
@@ -10,13 +10,13 @@ A handoff is a **cold start** document. Its reader is a fresh agent that has thi
 
 ## Steps
 
-1. **Target.** Look for handoffs in these paths in order:
-   - What the user gave you.
-   - `.agents/handoffs/*.md` (if there's one pick it else ask the user and recommended the recently updated).
-   - `.agents/handoff.md`
-   - `handoff.md`
-   - Paths from rules
-   If the file exists, replace all of it with the current state.
+1. **Target.** Find the path with `references/LOCATION.md`.
+   - If no source gives a path (detached HEAD), ask the user for a file name in `.agents/handoffs/`.
+   - Create the folder of the path. If the path is in `.agents/handoffs/` and `.agents/handoffs/.gitignore` does not exist, create that file with one line: `*`.
+   - Run the ignore check in `references/LOCATION.md`. If the exit code is 1, tell the user that git does not ignore the path. Ask before you continue.
+   - If the file exists, replace all of it with the current state.
+
+   Done when you have one absolute path that git ignores, or that the user approved.
 
 2. **Read the state from the repo.** Memory of the session is a second source; the repo is the first.
 
@@ -73,14 +73,20 @@ Written <YYYY-MM-DD>. Goal of the next session: <one sentence>.
 ## Next tasks
 
 1. <task>. Files: `<path:line>`. Done when: <a check the reader can run>.
+<N>. Delete `<path of this file>`. Ask the user first. Done when: the file does not exist.
 
 ## Needs approval
 
 - <action the user must approve first: Jira write, push, PR comment, merge, Jenkins trigger>.
+- Delete `<path of this file>` when all other tasks are complete.
 
 ## Not verified
 
 - <claim>. Check with: <command or file>.
+
+## Suggested skills
+
+- `<skill name>`: <the next task that uses it>.
 
 ## References
 
@@ -93,6 +99,8 @@ Written <YYYY-MM-DD>. Goal of the next session: <one sentence>.
 - **Record the session.** "Not verified" holds claims from the session that a next task depends on. A new problem that you see while you write goes under "Next tasks" as one line that starts with `Found during handoff:`. Leave the review of the code to the next session.
 - **Point, do not copy.** Specs, plans, ADRs, issues, and commits stay where they are. Give the path or URL under "References". Copy a plan into "Next tasks" only when the user asks you to include it.
 - **Order the next tasks** in the sequence the reader must do them. Give each task a "Done when" check.
+- **Delete task:** the last task is always the delete task in the template. Put the same action under "Needs approval".
+- **Suggested skills:** name each skill that a next task needs. The `load-handoff` skill loads them before the work starts.
 - **Style:** the style that the CLAUDE.md Defaults name for handoffs. Load that writing skill before you write.
 - **Secrets:** write the name of a credential, never its value.
 - **Git:** the handoff file is session scratch. Leave it uncommitted unless the user asks for a commit.

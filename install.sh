@@ -51,6 +51,7 @@ SKILL_FOLDERS=(
     "skills/google-dev-docs"
     "skills/grilling"
     "skills/handoff"
+    "skills/load-handoff"
     "skills/my-writing-style"
 )
 
